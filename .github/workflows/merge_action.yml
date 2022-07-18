@@ -4,7 +4,7 @@ on:
     types:
       - closed
     branches:
-      - 'test-branch'
+      - 'main'
     paths:
       - 'test_folder/test_file.js'
 
@@ -13,8 +13,7 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - name: Echo messages
-      run: |
+    - run: |
         echo The PR was merged
         echo "The title of you PR is ${{ github.event.pull_request.title}}"
         echo "The body of you PR is ${{ github.event.pull_request.body}}"
