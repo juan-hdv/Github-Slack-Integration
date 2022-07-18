@@ -9,11 +9,11 @@ on:
       - 'test_folder/test_file.js'
 
 jobs:
-  if_promoted:
+  promoted:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - name: Echo messages 
+    - name: Echo messages
       run: |
         echo The PR was merged
         echo "The title of you PR is ${{ github.event.pull_request.title}}"
