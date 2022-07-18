@@ -9,7 +9,7 @@ on:
       - 'test_folder/test_file.js'
 
 jobs:
-  if_promotion:
+  if_merged:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
