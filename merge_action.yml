@@ -1,0 +1,19 @@
+name: Publish Changes
+on:
+  pull_request_target:
+    types:
+      - closed
+    branches:
+      - 'master'
+    paths:
+      - 'test_folder/test_file.js'
+
+jobs:
+  if_promotion:
+    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'promote') 
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        echo The PR was merged
+        echo "The title of you PR is ${{ github.event.pull_request.title}}"
+        echo "The body of you PR is ${{ github.event.pull_request.body}}"
