@@ -9,7 +9,7 @@ on:
       - 'test_folder/test_file.js'
 
 jobs:
-  if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'promote') 
+  if: github.event.pull_request.merged == true
   runs-on: ubuntu-latest
   steps:
   - run: |
