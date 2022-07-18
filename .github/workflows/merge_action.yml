@@ -13,8 +13,16 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - name: PR Merged
+      run: |
         echo The PR was merged
         echo "The title of you PR is ${{ github.event.pull_request.title}}"
         echo "The body of you PR is ${{ github.event.pull_request.body}}"
         echo "End"
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_MESSAGE: ${{ github.event.pull_request.body}}
+        SLACK_TITLE: ${{ github.event.pull_request.title}}
+
