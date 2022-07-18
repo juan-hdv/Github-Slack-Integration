@@ -5,24 +5,24 @@ on:
       - closed
     branches:
       - 'main'
-    paths:
-      - 'test_folder/test_file.js'
 
 jobs:
   promoted:
-    if: github.event.pull_request.merged == true
+    if: |
+      (
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'Promote') &&
+      contains(github.event.pull_request.labels.*.name, 'from dev1 to prod1')
+      )
     runs-on: ubuntu-latest
     steps:
     - name: PR Merged
       run: |
-        echo The PR was merged
-        echo "The title of you PR is ${{ github.event.pull_request.title}}"
-        echo "The body of you PR is ${{ github.event.pull_request.body}}"
-        echo "End"
+        echo The PR was merged: ${{ github.event.pull_request.title}}"
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_MESSAGE: ${{ github.event.pull_request.body}}
+        SLACK_CHANNEL: githubchangelog
         SLACK_TITLE: ${{ github.event.pull_request.title}}
-
+        SLACK_MESSAGE: ${{ github.event.pull_request.body}}
