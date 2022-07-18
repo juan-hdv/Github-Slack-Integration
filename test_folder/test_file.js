@@ -1,1 +1,1 @@
-console.log("Hellow World ABC DEF HIJ KLM NOP QRS TUV XYX 2")
+console.log("Hellow World ABC")

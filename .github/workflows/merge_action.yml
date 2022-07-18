@@ -1,4 +1,4 @@
-name: Publish Changes Test
+name: Prod Promotion Slack Notification
 on:
   pull_request_target:
     types:
@@ -7,12 +7,12 @@ on:
       - 'main'
 
 jobs:
-  promoted:
+  promoted_to_prod:
     if: |
       (
       github.event.pull_request.merged == true &&
-      contains(github.event.pull_request.labels.*.name, 'Promote') &&
-      contains(github.event.pull_request.labels.*.name, 'from dev1 to prod1')
+      contains(github.event.pull_request.labels.*.name, 'promote') &&
+      contains(github.event.pull_request.labels.*.name, 'dev1→prod1')
       )
     runs-on: ubuntu-latest
     steps:
