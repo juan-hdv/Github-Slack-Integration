@@ -11,11 +11,11 @@ on:
 jobs:
   if_promoted:
     if: github.event.pull_request.merged == true
-      runs-on: ubuntu-latest
-      steps:
-      - run: |
-          echo The PR was merged
-          echo "The title of you PR is ${{ github.event.pull_request.title}}"
-          echo "The body of you PR is ${{ github.event.pull_request.body}}"
-          echo "End"
-  
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo messages 
+      run: |
+        echo The PR was merged
+        echo "The title of you PR is ${{ github.event.pull_request.title}}"
+        echo "The body of you PR is ${{ github.event.pull_request.body}}"
+        echo "End"
