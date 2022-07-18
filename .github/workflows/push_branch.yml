@@ -6,7 +6,7 @@ on:
       - 'test-branch'
 
 jobs:
-  if_pushed:
+  pushed:
     runs-on: ubuntu-latest
     steps:
     - name: Echo messages 
