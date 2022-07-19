@@ -9,6 +9,7 @@ jobs:
   pushed:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2.1.0    
     - name: Echo messages 
       run: |
         PR_BODY=${{ github.event.pull_request.body}}
