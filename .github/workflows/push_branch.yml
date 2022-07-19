@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2.1.0    
     - name: Echo messages 
       run: |
-        output=$( python ./scripts/save_formated_pr_body.py ${{ github.event.pull_request.body}} )
+        output=$( python save_formated_pr_body.py ${{ github.event.pull_request.body}} )
         echo "::set-output name=content::$output"
       id: pr_body
     - name: Print pr
