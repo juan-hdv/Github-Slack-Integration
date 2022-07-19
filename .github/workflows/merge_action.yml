@@ -27,4 +27,4 @@ jobs:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
         SLACK_CHANNEL: githubchangelog
         SLACK_TITLE: ${{ github.event.pull_request.title}}
-        SLACK_MESSAGE: "$NOTIFICATION_HEADER ${{ github.event.pull_request.body}}"
+        SLACK_MESSAGE: "${{ env.$NOTIFICATION_HEADER }} ${{ github.event.pull_request.body}}"
