@@ -71,12 +71,25 @@ def format_body(body: str, timestamp) -> str:
         pr_jira_link = get_pr_jira_link(pr_jira_code, jira_urls_list)
 
         #pr_jira_code = pr_jira_code.replace(pr_jira_code, f"[{pr_jira_code}]({pr_jira_link})") # noqa
-        result_string += f"[{pr_jira_code}]({pr_jira_link}) {description} {owner} {pr_github_url}\n"  # noqa
+        result_string += f"- [{pr_jira_code}]({pr_jira_link}) {description} {owner} {pr_github_url}\n\n"  # noqa
 
     return result_string
 
 
 if __name__ == '__main__':
-    body = sys.argv[1]
+    #body = sys.argv[1]
+    body = """
+    # Changes
+    - @qianshi508 Create draft job crated and updated signal for ML inference [#11234](https://github.com/NomadHealth/nomad-flask/pull/11234)
+    - @AgustinJimenezBDev [CXJD-147] Add more params to application completed tracking event [#11231](https://github.com/NomadHealth/nomad-flask/pull/11231)
+    - @AgustinJimenezBDev [CXJD-149] - Add more parameters to job viewed tracking event [#11241](https://github.com/NomadHealth/nomad-flask/pull/11241)
+
+    :robot: auto generated pull request
+
+
+    [CXJD-147]: https://nomadhealth.atlassian.net/browse/CXJD-147?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ
+    [CXJD-149]: https://nomadhealth.atlassian.net/browse/CXJD-149?atlOrigin=eyJpIjoiNWRkNTljNzYxNjVmNDY3MDlhMDU5Y2ZhYzA5YTRkZjUiLCJwIjoiZ2l0aHViLWNvbS1KU1cifQ
+    """
+
     timestamp = 1658201517
     print(format_body(body, timestamp))
