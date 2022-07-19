@@ -15,8 +15,6 @@ jobs:
       contains(github.event.pull_request.labels.*.name, 'dev1→prod1')
       )
     runs-on: ubuntu-latest
-    env:
-      NOTIFICATION_HEADER: "There was a Production deployment. It contained the following tickets:"
     steps:
     - name: PR Merged
       run: |
@@ -28,7 +26,8 @@ jobs:
         SLACK_CHANNEL: githubchangelog
         SLACK_TITLE: ${{ github.event.pull_request.title}}
         SLACK_MESSAGE: |
-          (
-          "${{ env.NOTIFICATION_HEADER }}" 
+          There was a Production deployment. It contained the following tickets:
+          Jira Code | Description | Owner | Github Url
+          ---------   -----------   -----   ----------
+
           "${{ github.event.pull_request.body}}"
-          )
