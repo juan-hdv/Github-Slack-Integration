@@ -13,7 +13,7 @@ jobs:
     - name: Echo messages 
       run: |
         output=$( python ./scripts/save_formated_pr_body.py ${{ github.event.pull_request.body}} )
-        echo "::set-output name=content::$PR_BODY"
+        echo "::set-output name=content::$output"
       id: pr_body
     - name: Print pr
       run: echo "${{ steps.pr_body.outputs.content }}"
