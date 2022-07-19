@@ -16,15 +16,11 @@ jobs:
       )
     runs-on: ubuntu-latest
     env:
-      NOTIFICATION_HEADER: ""
+      NOTIFICATION_HEADER: "There was a Production deployment. It contained the following tickets:"
     steps:
     - name: PR Merged
       run: |
         echo The PR was merged: ${{ github.event.pull_request.title }}"
-        echo "There was a Production deployment. It contained the following tickets:" >> $NOTIFICATION_HEADER
-        echo "" >> $GITHUB_STEP_SUMMARY
-        echo "Jira Code | Description | Owner | Github Url" >> $NOTIFICATION_HEADER
-        echo "---------   -----------   -----   ----------" >> $NOTIFICATION_HEADER
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
