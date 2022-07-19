@@ -18,14 +18,7 @@ jobs:
     steps:
     - name: PR Merged
       run: |
-        echo The PR was merged: ${{ github.event.pull_request.title}}"
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: githubchangelog
-        SLACK_TITLE: ${{ github.event.pull_request.title}}
-        SLACK_MESSAGE: ${{ github.event.pull_request.body}}
+        echo The PR was merged: ${{ github.event.pull_request.title }}"
 
   format_body:
     runs-on: ubuntu-latest
@@ -43,17 +36,8 @@ jobs:
 
   slack_notify:
     needs: format_body
-    if: |
-      (
-      github.event.pull_request.merged == true &&
-      contains(github.event.pull_request.labels.*.name, 'promote') &&
-      contains(github.event.pull_request.labels.*.name, 'dev1→prod1')
-      )
     runs-on: ubuntu-latest
     steps:
-    - name: PR Merged
-      run: |
-        echo The PR was merged: ${{ github.event.pull_request.title}}"
     - name: Slack Notification
       uses: rtCamp/action-slack-notify@v2
       env:
