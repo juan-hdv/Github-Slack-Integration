@@ -27,7 +27,7 @@ jobs:
         SLACK_TITLE: ${{ github.event.pull_request.title}}
         SLACK_MESSAGE: |
           There was a Production deployment. It contained the following tickets:
-          Jira Code | Description | Owner | Github Url
-          ---------   -----------   -----   ----------
 
-          "${{ github.event.pull_request.body}}"
+          Jira Code | Description | Owner | Github Url
+          --------------------------------------------------
+          ${{ github.event.pull_request.body}}
