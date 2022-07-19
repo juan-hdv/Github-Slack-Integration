@@ -78,5 +78,5 @@ def format_body(body: str, timestamp) -> str:
 
 if __name__ == '__main__':
     body = sys.argv[1]
-    timestamp = int(sys.argv[2])
+    timestamp = 1658201517
     print(format_body(body, timestamp))
